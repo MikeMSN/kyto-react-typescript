@@ -15,7 +15,8 @@ const App: React.FC = () => {
             id: Date.now(),
             completed: false
         }
-        setTodos([newTodo, ...todos]);
+        //setTodos([newTodo, ...todos]);
+        setTodos(prev => [newTodo, ...prev]);
     }
 
   return (
