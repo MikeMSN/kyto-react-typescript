@@ -19,12 +19,24 @@ const App: React.FC = () => {
         setTodos(prev => [newTodo, ...prev]);
     }
 
+    const toggleHandler = (id: number) => {
+        setTodos(prev => prev.map(t => {
+            if(t.id === id ) {
+                t.completed = !t.completed;
+            }
+            return t;
+        }))
+    }
+    const removeHandler = (id: number) => {
+        setTodos(prev => prev.filter(todo => todo.id !== id))
+    }
+
   return (
     <>
       <Navbar/>
       <div className="container">
           <TodoForm onAdd={addHandler}/>
-          <TodoList todos={todos}/>
+          <TodoList todos={todos} onRemove={removeHandler} onToggle={toggleHandler}/>
       </div>
     </>
   );
